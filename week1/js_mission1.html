@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO</title>
+    <style>
+      body {
+        background-color: aliceblue;
+        font-family: Pretendard, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        font-size: 40px;
+        font-weight: 500;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 40px;
+        border-bottom: 1px solid lightgrey;
+        margin-bottom: 30px;
+      }
+
+      /* 입력창 */
+      .input_container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      input {
+        width: 50%;
+        max-width: 400px;
+        height: 40px;
+        padding: 10px;
+        border: 1px solid lightgrey;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      /* 할 일 & 해낸 일 컨테이너 */
+      .todo_container {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+      }
+
+      .list_container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 200px;
+      }
+
+      h1 {
+        font-size: 22px;
+        border-bottom: 2px solid lightgrey;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+      }
+
+      /* 할 일 목록 */
+      .todo_list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+      }
+
+      /* 개별 아이템 */
+      .item_container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 8px 12px;
+        border-bottom: 1px solid lightgrey;
+      }
+
+      /* 할 일 텍스트 */
+      .item_container span {
+        flex-grow: 1;
+        text-align: left;
+        font-size: 16px;
+        color: black;
+      }
+
+      /* 완료 및 삭제 버튼 */
+      .item_button {
+        border: none;
+        background-color: rgb(204, 216, 228);
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+
+      .item_button:hover {
+        background-color: rgb(189, 200, 211);
+      }
+    </style>
+  </head>
+  <body>
+    <header>UMC Study Plan</header>
+    <form class="input_container">
+      <input
+        type="text"
+        id="todoInput"
+        placeholder="스터디 계획을 작성해보세요"
+        onkeydown="keyCodeCheck()"
+      />
+    </form>
+    <div class="todo_container">
+      <div class="list_container">
+        <h1>해야 할 일</h1>
+        <ul class="todo_list" id="todoList"></ul>
+      </div>
+      <div class="list_container">
+        <h1>해낸 일</h1>
+        <ul class="todo_list" id="doneList"></ul>
+      </div>
+    </div>
+    <script src="./js_mission1.js"></script>
+  </body>
+</html>

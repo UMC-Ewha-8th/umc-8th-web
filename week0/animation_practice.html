@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @keyframes bounce {
+        0% {
+          transform: translateY(0);
+        }
+
+        100% {
+          transform: translateY(200px);
+        }
+      }
+      .ball1 {
+        width: 100px;
+        height: 100px;
+        background-color: purple;
+        border-radius: 500%;
+        animation: bounce 1s ease-in alternate infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ball1"></div>
+  </body>
+</html>
