@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /** 전체 선택자 기본적으로 설정된 마진을 없앰. */
+    * {
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    .block1{ 
+      display: block;
+      border: 3px solid black;
+    }
+
+    .block2{ 
+      width: 200px; 
+      height: 100px;
+      border: 3px solid gray;
+    }
+
+    .inline1{
+      display: inline;
+      border: 3px solid black;
+    }
+
+    .inline2{
+      display: inline;
+      width: 200px; 
+      height: 100px;
+      border: 3px solid gray;
+    }
+
+    .inline-block1{
+      display: inline-block;
+      border: 3px solid black;
+    }
+
+    .inline-block2{
+      display: inline-block;
+      width: 200px; 
+      height: 100px;
+      border: 3px solid gray;
+    }
+
+
+  </style>
+</head>
+
+<body>
+  <div class="block1">block1</div>
+  <div class="block2">block2</div>
+
+  <div class="inline1">inline1</div>
+  <div class="inline2">inline2</div>
+
+  <div class="inline-block1">inline-block1</div>
+  <div class="inline-block2">inline-block2</div>
+
+</body>
+
+</html>
