@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+      }
+
+      .top {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+      }
+
+      header {
+        background-color: black;
+        color: white;
+        text-align: center;
+        font-size: 30px;
+        padding: 30px;
+      }
+
+      menu {
+        background-color: rgb(255, 53, 53);
+        color: white;
+        text-align: center;
+        font-size: 30px;
+        padding: 30px;
+      }
+
+      .hero {
+        height: 300px;
+        background-color: #5c91ce;
+        color: white;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        padding: 30px;
+      }
+
+      .middle {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-areas: "main none image_extra";
+      }
+
+      main {
+        height: 330px;
+        background: rgb(32, 32, 59);
+        color: white;
+        text-align: center;
+        font-size: 30px;
+        padding: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+      }
+
+      .image_extra {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+      }
+
+      .image {
+        background: rgb(181, 238, 238);
+        color: black;
+        text-align: center;
+        font-size: 30px;
+        padding: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+      }
+
+      .extra {
+        background: rgb(41, 202, 140);
+        color: black;
+        text-align: center;
+        font-size: 30px;
+        padding: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+      }
+
+      footer {
+        background: rgb(247, 211, 112);
+        color: black;
+        text-align: center;
+        font-size: 30px;
+        padding: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top">
+      <header>HEADER</header>
+      <menu>MENU</menu>
+    </div>
+    <div class="hero">HERO</div>
+    <div class="middle">
+      <main>MAIN</main>
+      <div class="none"></div>
+      <div class="image_extra">
+        <div class="image">IMAGE</div>
+        <div class="extra">EXTRA</div>
+      </div>
+    </div>
+    <footer>BANNER</footer>
+  </body>
+</html>
