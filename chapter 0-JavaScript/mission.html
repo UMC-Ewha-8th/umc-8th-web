@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>UMC Study Plan</title>
+  <style>
+    body {
+      background-color: #e8ecf2;
+      font-family: sans-serif;
+      padding: 40px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    #taskInput {
+      display: block;
+      margin: 0 auto;
+      width: 600px;
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #2e5a88;
+      border-radius: 5px;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+      gap: 100px;
+    }
+    .column {
+      width: 300px;
+    }
+    .column h3 {
+      text-align: center;
+      font-weight: bold;
+      text-decoration: underline;
+      margin-bottom: 20px;
+    }
+    .item {
+      background-color: #f3f6fa;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .item span {
+      font-weight: bold;
+    }
+    .btn {
+      background-color: #d7dce5;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>UMC Study Plan</h1>
+  <input type="text" id="taskInput" placeholder="스터디 계획을 작성해보세요!">
+
+  <div class="container">
+    <div class="column">
+      <h3>해야 할 일</h3>
+      <div id="todoList"></div>
+    </div>
+    <div class="column">
+      <h3>해낸 일</h3>
+      <div id="doneList"></div>
+    </div>
+  </div>
+
+  <script>
+    const input = document.getElementById("taskInput");
+    const todoList = document.getElementById("todoList");
+    const doneList = document.getElementById("doneList");
+
+    input.addEventListener("keypress", function (e) {
+      if (e.key === "Enter" && input.value.trim() !== "") {
+        addTodo(input.value.trim());
+        input.value = "";
+      }
+    });
+
+    function addTodo(text) {
+      const item = document.createElement("div");
+      item.className = "item";
+      item.innerHTML = `
+        <span>${text}</span>
+        <button class="btn" onclick="completeTask(this)">완료</button>
+      `;
+      todoList.appendChild(item);
+    }
+
+    function completeTask(button) {
+      const item = button.parentElement;
+      item.querySelector("button").remove();
+      const deleteBtn = document.createElement("button");
+      deleteBtn.textContent = "삭제";
+      deleteBtn.className = "btn";
+      deleteBtn.onclick = function () {
+        doneList.removeChild(item);
+      };
+
+      item.appendChild(deleteBtn);
+      doneList.appendChild(item);
+    }
+  </script>
+</body>
+</html>
