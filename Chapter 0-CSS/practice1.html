@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- CSS 파일 업로드 -->
+  <!-- <link rel="stylesheet" href="./practice1.css" /> -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>코드 Style 우선순위</title>
+  <style>
+    /* !important 속성 */
+    /* 다른 모든 스타일 규칙보다, 우선 적용되도록, 강제하는데 사용! */
+      
+    .lemon-class {
+     color: gold !important;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>레몬 말렌카 맛있다.</h1>
+  <div>레몬 말렌카 맛있다.<div>
+  
+  <h1>레몬<h1> <!--태그-->
+
+  <h1 class="lemon-class">레몬<h1> <!--클래스-->
+      
+  <h1 id="lemon-id">레몬<h1> <!--아이디-->
+      
+  <h1 style="color: yellow;">레몬<h1> <!--인라인 스타일링-->
+      
+  
+</body>
+
+</html>

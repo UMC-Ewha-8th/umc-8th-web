@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>튀는 공 (찌그러짐 효과)</title>
+  <style>
+    .ball {
+      width: 100px;
+      height: 100px;
+      background-color: hotpink;
+      border-radius: 50%;
+      position: relative;
+      animation: bounce 0.6s ease-in-out infinite alternate;
+    }
+
+    @keyframes bounce {
+      0% {
+        top: 0;
+        transform: scale(1, 1); /* 원래 상태 */
+      }
+      100% {
+        top: 200px;
+        transform: scale(1.2, 0.8); /* 찌그러짐 */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="ball"></div>
+</body>
+</html>

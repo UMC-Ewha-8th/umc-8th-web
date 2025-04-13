@@ -1,0 +1,6 @@
+/* !important 속성 */
+/* 다른 모든 스타일 규칙보다, 우선 적용되도록, 강제하는데 사용! */
+      
+.lemon-class {
+  color: red !important;
+}

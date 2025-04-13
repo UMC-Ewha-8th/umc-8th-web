@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>border-box, content-box</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: purple;
+      margin-bottom: 10px;
+      /* box에 padding과 border를 적용 */
+      padding: 10px;
+      border: 10px solid red;
+    }
+
+    .box1 {
+      box-sizing: content-box;
+    }
+
+    .box2 {
+      box-sizing: border-box; 
+      /* padding과, border가 있어도 사용자가 지정한 width, height을 유지함 */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box box1">border-box</div>
+  <div class="box box2">content-box</div>
+</body>
+
+</html>

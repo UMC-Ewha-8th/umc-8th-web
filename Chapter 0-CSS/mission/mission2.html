@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Grid + Flex Layout</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    .container {
+      display: grid;
+      grid-template-rows: 80px 200px 300px 80px;
+      grid-template-columns: 1fr 1fr 1fr;
+      height: 100vh;
+    }
+
+    .header {
+      background: #0f1a34;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      grid-column: 1 / 2;
+    }
+
+    .menu {
+      background: #e94e4e;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      grid-column: 2 / 4;
+    }
+
+    .hero {
+      background: #4d87c6;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      grid-column: 1 / 4;
+    }
+
+    .main {
+      background: #19253a;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      grid-column: 1 / 2;
+    }
+
+    .gap {
+      background: white;
+      grid-column: 2 / 3;
+    }
+
+    .side {
+      display: flex;
+      flex-direction: column;
+      grid-column: 3 / 4;
+    }
+
+    .image {
+      flex: 1;
+      background: #d2eced;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .extra {
+      flex: 1;
+      background: #4caf88;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .banner {
+      background: #f6c95c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      grid-column: 1 / 4;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">HEADER</div>
+    <div class="menu">MENU</div>
+    <div class="hero">HERO</div>
+    <div class="main">MAIN</div>
+    <div class="gap"></div>
+    <div class="side">
+      <div class="image">IMAGE</div>
+      <div class="extra">EXTRA</div>
+    </div>
+    <div class="banner">BANNER</div>
+  </div>
+</body>
+</html>
