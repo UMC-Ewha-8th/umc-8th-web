@@ -4,7 +4,7 @@ import { Movie } from "../types/movie";
 import MovieCard from "../components/MovieCard";
 import Pagination from "../components/Pagination";
 
-export default function PopularPage() {
+export default function MoviePage() {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
@@ -12,21 +12,17 @@ export default function PopularPage() {
 
   useEffect((): void => {
     const fetchMovies = async (): Promise<void> => {
-      try {
-        const { data } = await axios(
-          `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`,
-          {
-            headers: {
-              Authorization: `Bearer ${import.meta.env.VITE_TMDB_KEY}`,
-            },
-          }
-        );
+      const { data } = await axios(
+        `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`,
+        {
+          headers: {
+            Authorization: `Bearer ${import.meta.env.VITE_TMDB_KEY}`,
+          },
+        }
+      );
 
-        setMovies(data.results);
-        setTotalPages(data.total_pages);
-      } catch (error) {
-        console.error("Error fetching popular movies:", error);
-      }
+      setMovies(data.results);
+      setTotalPages(data.total_pages);
     };
 
     fetchMovies();
@@ -34,7 +30,7 @@ export default function PopularPage() {
 
   return (
     <>
-      <div className="p-10 grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+      <div className="p-10 grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 bg-black">
         {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}

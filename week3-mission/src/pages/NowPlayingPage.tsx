@@ -36,13 +36,13 @@ export default function NowPlayingPage() {
   if (loading) return <LoadingSpinner />;
   if (error)
     return (
-      <div className="text-green-500 text-center items-center h-screen">
+      <div className="text-green-500 text-center items-center h-screen bg-black">
         {error}
       </div>
     );
 
   return (
-    <div className="p-10 grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+    <div className="p-10 grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 bg-black">
       {movies &&
         movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
     </div>

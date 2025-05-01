@@ -5,12 +5,12 @@ export default function Navbar() {
 
   const linkClass = (path: string) =>
     `block px-4 py-2 transition-colors duration-200 hover:text-green-400 ${
-      location.pathname === path ? "text-green-400 font-bold" : "text-black"
+      location.pathname === path ? "text-green-400 font-bold" : "text-white"
     }`;
 
   return (
     <div>
-      <ul className="flex flex-col md:flex-row md:space-x-4 mt-2 md:mt-0">
+      <ul className="flex flex-col md:flex-row md:space-x-4 mt-2 md:mt-0 bg-black">
         <li>
           <Link to="/" className={linkClass("/")}>
             Home

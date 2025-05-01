@@ -14,7 +14,7 @@ export default function Pagination({
   const numPages = Math.ceil(total / limit);
 
   return (
-    <nav className="flex items-center justify-center gap-4 mb-4">
+    <nav className="flex items-center justify-center gap-4 pb-4 bg-black">
       <button
         onClick={() => setPage(page - 1)}
         disabled={page === 1}
