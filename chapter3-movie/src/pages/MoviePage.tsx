@@ -1,42 +1,20 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { Movie, MovieResponse } from "../types/movie";
+import { useState } from "react";
+import { MovieResponse } from "../types/movie";
 import MovieCard from "../components/MovieCard";
 import { LoadingSpinner } from "../components/LoadingSpinner";
 import { useParams } from "react-router-dom";
+import useCustomFetch from "../components/hooks/useCustomFetch";
 
 export default function MoviePage() : JSX.Element {
-  const [movies, setMovies] = useState<Movie[]>([]);
-  const [isPending, setIsPending] = useState(false);
-  const [isError, setIsError] = useState(false);
   const [page, setPage] = useState(1);
   const { category } = useParams<{
     category: string;
   }>();
 
-  useEffect(() : void => {
-    const fetchMovies = async () : Promise<void> => {
-      setIsPending(true);
-      try {
-        const { data } = await axios.get<MovieResponse>(
-          `https://api.themoviedb.org/3/movie/${category}?language=ko-KR&page=${page}`,
-          {
-            headers: {
-              Authorization: `Bearer ${import.meta.env.VITE_TMDB_KEY}`, 
-            },
-          }
-        );
-  
-        setMovies(data.results);
-      } catch {
-        setIsError(true);
-      } finally {
-        setIsPending(false);
-      }
-    };
+  const url = `https://api.themoviedb.org/3/movie/${category}?language=ko-KR&page=${page}`
 
-    fetchMovies();
-  }, [page, category]);
+  const {data: movies, isPending, isError} = useCustomFetch<MovieResponse>(url);
+
 
   if (isError) {
     return (
@@ -69,10 +47,10 @@ export default function MoviePage() : JSX.Element {
 
       {!isPending && (
         <div className="p-10 grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-      {movies.map((movie) : JSX.Element => (
-          <MovieCard key={movie.id} movie={movie} />
-      ))}
-    </div>
+          {movies?.results.map((movie) : JSX.Element => (
+            <MovieCard key={movie.id} movie={movie} />
+        ))}
+        </div>
       )}
     </>
   );

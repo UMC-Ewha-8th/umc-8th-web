@@ -1,7 +1,6 @@
-export type Movie = {
+export type BaseMovie = {
   adult: boolean;
   backdrop_path: string;
-  genre_ids: number[];
   id: number;
   original_language: string;
   overview: string;
@@ -14,9 +13,59 @@ export type Movie = {
   vote_count: number;
 };
 
+export type Movie = BaseMovie & {
+  genre_ids: number[];
+};
+
 export type MovieResponse = {
   page: number;
   results: [];
   total_pages: number;
   total_results: number;
+};
+
+type Genre = {
+  id: number;
+  name: string;
+};
+
+type ProductionCompany = {
+  "id": number,
+  "logo_path": string,
+  "name": string,
+  "origin_country": string
+};
+
+type ProductionCountries = {
+  "iso_3166_1": string,
+  "name": string
+};
+
+type SpokenLanguages = {
+  "english_name": string,
+  "iso_639_1": string,
+  "name": string
+};
+
+type BelongsToCollection = {
+  "id": number,
+  "name": string,
+  "poster_path": string,
+  "backdrop_path": string
+};
+
+export type MovieDetailResponse = BaseMovie & {
+  belongs_to_collection: BelongsToCollection;
+  budget: number;
+  genres: Genre[];
+  homepage: string;
+  imdb_id: string;
+  origin_country: string[];
+  production_companies: ProductionCompany[];
+  production_countries: ProductionCountries[];
+  revenue: number;
+  runtime: number;
+  spoken_languages: SpokenLanguages[];
+  status: string;
+  tagline: string;
 };
