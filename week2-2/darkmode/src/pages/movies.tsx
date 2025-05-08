@@ -1,4 +1,3 @@
-
 import { Movie, MovieResponse } from '../types/movie'
 import { useState, useEffect } from 'react'
 
