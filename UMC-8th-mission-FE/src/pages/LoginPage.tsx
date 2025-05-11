@@ -11,8 +11,13 @@ const LogInPage = () => {
       validate: validateSignin,
     });
 
-  const handleSumit = () => {
+  const handleSubmit = () => {
     console.log(values);
+  };
+
+  const handleGoogleLogin = () => {
+    window.location.href =
+      import.meta.env.VITE_SERVER_API_URL + "v1/auth/google/login";
   };
 
   const isDisabled =
@@ -43,7 +48,7 @@ const LogInPage = () => {
               ? "border-red-500 bg-red-200"
               : "border-gray-300"
           }`}
-          type={"password"}
+          type="password"
           placeholder="비밀번호를 입력하세요"
         />
         {errors?.password && touched.password && (
@@ -51,11 +56,21 @@ const LogInPage = () => {
         )}
         <button
           type="button"
-          onClick={handleSumit}
+          onClick={handleSubmit}
           disabled={isDisabled}
           className="bg-[#807bff] text-white w-[300px] p-[10px] rounded-sm cursor-pointer hover:bg-[#807bff]/80 transition-colors disabled:bg-[#807bff]/50 disabled:cursor-not-allowed"
         >
           로그인
+        </button>
+        <button
+          type="button"
+          onClick={handleGoogleLogin}
+          className="bg-[#807bff] text-white w-[300px] p-[10px] rounded-sm cursor-pointer hover:bg-[#807bff]/80 transition-colors"
+        >
+          <div className="flex items-center justify-center gap-2">
+            <img src={"/images/google.svg"} alt="Google Logo" />
+            <span>구글 로그인</span>
+          </div>
         </button>
       </div>
     </div>

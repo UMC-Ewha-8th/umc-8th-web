@@ -7,6 +7,7 @@ import HomeLayout from "./assets/layouts/HomeLayout";
 import SignUpPage1 from "./pages/SignUpPage1";
 import SignUpPage2 from "./pages/SignUpPage2";
 import SignUpPage3 from "./pages/SignUpPage3";
+import GoogleLoginRedirectPage from "./pages/GoogleLoginRedirectPage";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       { path: "signup", element: <SignUpPage1 /> },
       { path: "signup2", element: <SignUpPage2 /> },
       { path: "signup3", element: <SignUpPage3 /> },
+      { path: "v1/auth/google/callback", element: <GoogleLoginRedirectPage /> },
     ],
   },
 ]);
