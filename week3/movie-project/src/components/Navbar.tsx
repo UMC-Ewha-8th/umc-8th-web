@@ -8,10 +8,10 @@ const Navbar = () => {
 
   const navItems = [
     { name: '홈', path: '/' },
-    { name: '인기 영화', path: '/popular' },
-    { name: '상영 중', path: '/nowplaying' },
-    { name: '평점 높은', path: '/top-rated' },
-    { name: '개봉 예정', path: '/upcoming' },
+    { name: '인기 영화', path: '/Movies/popular' },
+    { name: '상영 중', path: '/Movies/now_playing' },
+    { name: '평점 높은', path: '/Movies/top_rated' },
+    { name: '개봉 예정', path: '/Movies/upcoming' },
   ];
 
   const getLinkClass = (path: string) => {

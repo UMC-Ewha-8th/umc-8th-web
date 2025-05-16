@@ -1,17 +1,28 @@
-import { Movie } from "../types/Movie";
+import { useNavigate, useParams } from "react-router-dom";
+import { Movie } from "../types/movie";
 import React from 'react';
 
 interface MovieCardProps {
-    movie: Movie;   }
+    movie: Movie;
+}
 
-
-export default function MovieCard({movie}: MovieCardProps) : React.ReactElement {
+export default function MovieCard({ movie }: MovieCardProps): React.ReactElement {
     const [isHovered, setIsHovered] = React.useState(false);
+    const navigate = useNavigate();
+    const {category} = useParams<{category:string}>();
+
+    const handleClick = () => {
+        if (!category || !movie?.id) return;
+        navigate(`/Movies/${category}/${movie.id}`);
+      };
+    
+    
 
     return (
         <div className='relative rounded-xl shadow-lg overflow-hidden cursor-pointer
         w-44 transition-transform duration-300 hover:scale-105' onMouseEnter={() => setIsHovered(true)} 
-        onMouseLeave={() => setIsHovered(false)}>
+        onMouseLeave={() => setIsHovered(false)}
+        onClick={handleClick}>
         <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} 
         className = ''
 

@@ -1,17 +1,19 @@
 import React from 'react';
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios'
 import MovieCard from '../components/MovieCard';
-import { Movie, MovieResponse } from '../types/Movie';
+import { Movie, MovieResponse } from '../types/movie';
 
 export default function PopularMoviePage(): React.ReactElement {
     const [movies, setMovies] = useState<Movie[]>([]);
     const [page, setPage] = useState(1);
+    const {category} = useParams<{category : string;}>();
 
     useEffect((): void => {
         const fetchMovies = async () : Promise<void> => {
             const { data } = await axios.get<MovieResponse>(
-                `https://api.themoviedb.org/3/movie/popular?language=ko-KR&page=${page}`,
+                `https://api.themoviedb.org/3/movie/${category}?language=ko-KR&page=${page}`,
                 {
                     headers: {
                         Authorization: `Bearer ${import.meta.env.VITE_TMDB_KEY}`,
@@ -24,7 +26,7 @@ export default function PopularMoviePage(): React.ReactElement {
         
 
         fetchMovies()
-       }, [page]);
+       }, [page, category]); // url에서 카테고리 가져옴
 
        return (
         <>
@@ -40,6 +42,7 @@ export default function PopularMoviePage(): React.ReactElement {
             </button>
 
         </div>
+        {/* 무비카드 */}
         <div className='p-10 grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl: grid-cols-6'>
          
 

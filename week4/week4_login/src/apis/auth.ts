@@ -31,15 +31,10 @@ export const postSignin = async (body: RequestSigninDto)
 }
 
 export const getMyInfo = async ():Promise<ResponseMyInfoDto> => {
-    const {getItem} = useLocalStorage(LOCAL_STORAGE_KEY.accessToken)
     const { data } = await axiosInstance.get(
-        `/v1/users/me`, {
-            headers: {
-                Authorization
-                : `Bearer ${localStorage.getItem("accessToken")}`,
-            },
+        `/v1/users/me`)
+        
+        return data;
         }
-    );
-
-    return data;
-}
+    
+    
