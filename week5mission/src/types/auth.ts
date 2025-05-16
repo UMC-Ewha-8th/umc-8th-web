@@ -1,4 +1,4 @@
-import { CommonResponse } from "./common";
+import type { CommonResponse } from "./common";
 
 export type RequestSignupDto = {
   name: string;
@@ -8,7 +8,7 @@ export type RequestSignupDto = {
   password: string;
 };
 
-export type ResponeSignupDto = CommonResponse<{
+export type ResponseSignupDto = CommonResponse<{
   id: number;
   name: string;
   email: string;
@@ -23,9 +23,16 @@ export type RequestSigninDto = {
   password: string;
 };
 
-export type ResponeSigninDto = CommonResponse<{
+export type ResponseSigninDto = CommonResponse<{
   id: number;
   name: string;
   accessToken: string;
   refreshToken: string;
+}>;
+
+export type ResponseMyInfoDto = CommonResponse<{
+  id: number;
+  name: string;
+  email: string;
+  avatar?: string;
 }>;
