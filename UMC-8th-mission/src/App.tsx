@@ -10,6 +10,7 @@ import MoviePage from './pages/MoviePage';
 import MyPage from './pages/MyPage';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedLayout from './layouts/ProtectedLayout';
+import GoogleLoginRedirectPage from './pages/GoogleLoginRedirectPage';
 
 
 // 1. 홈페이지
@@ -28,6 +29,7 @@ const publicRoutes:RouteObject[] = [
       {path: "signup", element: <SignupPage />},
       {path: "movie/:movieId", element: <MovieDetailPage />},
       {path: "movies/:category", element: <MoviePage />},
+      {path: "v1/auth/google/callback", element: <GoogleLoginRedirectPage />},
     ],
   },
 ];
