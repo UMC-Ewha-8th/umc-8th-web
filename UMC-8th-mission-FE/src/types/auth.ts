@@ -1,6 +1,6 @@
-import { CommonResponse } from "./common";
+import type { CommonResponse } from "./common.ts";
 
-export type RequestSignupDto = {
+export type RequestUser = {
   name: string;
   email: string;
   bio?: string;
@@ -8,7 +8,14 @@ export type RequestSignupDto = {
   password: string;
 };
 
-export type ResponeSignupDto = CommonResponse<{
+export type RequestSignupDto = {
+  name: string;
+  email: string;
+  password: string;
+  passwordCheck: string;
+};
+
+export type ResponseSignupDto = CommonResponse<{
   id: number;
   name: string;
   email: string;
@@ -23,9 +30,19 @@ export type RequestSigninDto = {
   password: string;
 };
 
-export type ResponeSigninDto = CommonResponse<{
+export type ResponseSigninDto = CommonResponse<{
   id: number;
   name: string;
   accessToken: string;
   refreshToken: string;
+}>;
+
+export type ResponseMyInfoDto = CommonResponse<{
+  id: number;
+  name: string;
+  email: string;
+  bio: string | null;
+  avatar: string | null;
+  createdAt: Date;
+  updatedAt: Date;
 }>;
