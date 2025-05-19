@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { Navbar } from "../hooks/Navbar";
+import Footer from "../components/Footer";
 
 const HomeLayout = () => {
   return (
@@ -7,10 +8,10 @@ const HomeLayout = () => {
       <nav>
         <Navbar />
       </nav>
-      <main className="flex-1">
+      <main className="flex-1 mt-10">
         <Outlet />
       </main>
-      <footer>푸터</footer>
+      <Footer />
     </div>
   );
 };
