@@ -8,7 +8,7 @@ const Navbar = () => {
           to="/"
           className="text-xl font-bold text-gray-800 dark:text-white"
         >
-          썸머 미션 홈페이지
+          SUMMER LP
         </Link>
         <div className="space-x-6">
           <Link

@@ -1,22 +1,28 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLps } from "../hooks/useLps";
 import LPCard from "../components/LPCard";
 import { LP } from "../types/lp";
+import { useInView } from "react-intersection-observer";
 
 const HomePage = () => {
   const [sort, setSort] = useState<"old" | "new">("new");
-  const { data: lps, isLoading, isError, error } = useLps(sort);
+  const {
+    data,
+    isLoading,
+    isError,
+    error,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useLps(sort);
+  const { ref, inView } = useInView();
 
+  // 무한 스크롤 트리거
   useEffect(() => {
-    console.log("useEffect - lps:", lps);
-  }, [lps]);
-
-  // 데이터 상태 콘솔 출력 (디버깅용)
-  console.log("lps 전체 데이터:", lps);
-  console.log("lps.data:", lps?.data);
-  console.log("lps.data.data (LP 배열):", lps?.data?.data);
-  console.log("LP 배열 길이:", lps?.data?.data?.length);
+    if (inView && hasNextPage) {
+      fetchNextPage();
+    }
+  }, [inView, hasNextPage, fetchNextPage]);
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) {
@@ -41,15 +47,26 @@ const HomePage = () => {
         </button>
       </div>
 
-      {lps?.data?.data?.length ? (
+      {data?.pages && data.pages.length > 0 ? (
         <div className="grid grid-cols-3 gap-4">
-          {lps.data.data.map((lp: LP) => (
-            <LPCard key={lp.id} lp={lp} isLoggedIn={true} />
-          ))}
+          {data.pages.flatMap((page) =>
+            page.data.data.map((lp: LP) => (
+              <LPCard key={lp.id} lp={lp} isLoggedIn={true} />
+            ))
+          )}
         </div>
       ) : (
         <p>표시할 LP가 없습니다.</p>
       )}
+
+      {/* 스크롤 감지 지점 */}
+      <div ref={ref} className="h-8 mt-4 text-center text-gray-500">
+        {isFetchingNextPage
+          ? "불러오는 중..."
+          : hasNextPage
+          ? "더 불러오기..."
+          : "모든 데이터를 불러왔습니다."}
+      </div>
     </main>
   );
 };
