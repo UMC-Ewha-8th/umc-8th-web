@@ -10,7 +10,6 @@ function useForm<T>({ initialValue, validate }: UseFormProps<T>) {
   const [touched, setTouched] = useState<Record<string, boolean>>();
   const [errors, setErrors] = useState<Record<string, string>>();
 
-  //사용자가 입력값을 바꿀 때 실행되는 함수
   const handleChange = (name: keyof T, text: string) => {
     setvalues({
       ...values,
@@ -25,7 +24,6 @@ function useForm<T>({ initialValue, validate }: UseFormProps<T>) {
     });
   };
 
-  //이메일 인풋, 패스워드 인풋, 속성들을 가져오는 것
   const getInputProps = (name: keyof T) => {
     const value = values[name];
     const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
@@ -36,7 +34,6 @@ function useForm<T>({ initialValue, validate }: UseFormProps<T>) {
     return { value, onChange, onBlur };
   };
 
-  // values가 변경될 때마다 에러 검증 로직 실행됨.
   useEffect(() => {
     const newErrors = validate(values);
     setErrors(newErrors);
