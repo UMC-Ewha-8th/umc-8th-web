@@ -15,9 +15,8 @@ import SignUpPage3 from "./pages/SignUpPage3";
 import Mypage from "./pages/MyPage";
 import ProtectedLayout from "./assets/layouts/ProtectedLayout";
 import GoogleLoginRedirectPage from "./pages/GoogleLoginRedirectPage";
-import LPDetailPageWrapper from "./pages/LPDetailPageWrapper";
+import LPDetailPage from "./pages/LPDetailPage";
 
-// QueryClient 생성
 const queryClient = new QueryClient();
 
 const publicRoutes: RouteObject[] = [
@@ -36,8 +35,8 @@ const publicRoutes: RouteObject[] = [
         element: <GoogleLoginRedirectPage />,
       },
       {
-        path: "/lp/:id",
-        element: <LPDetailPageWrapper />,
+        path: "/lp/:lpId",
+        element: <LPDetailPage />,
       },
     ],
   },
